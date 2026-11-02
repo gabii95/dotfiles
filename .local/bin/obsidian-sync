@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Evitar ejecuciones simultáneas
+LOCKFILE="/tmp/obsidian-sync.lock"
+exec 200>"$LOCKFILE"
+flock -n 200 || exit 0
+
+VAULT_LOCAL="/home/gabriel/GoogleDrive/200-limbo-obsidian"
+VAULT_REMOTE="gdrive:200-limbo-obsidian"
+LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}"
+LOG_FILE="$LOG_DIR/obsidian-sync.log"
+
+mkdir -p "$LOG_DIR"
+
+# Sincronización bidireccional incremental
+rclone bisync "$VAULT_LOCAL" "$VAULT_REMOTE" \
+    --conflict-resolve newer \
+    --conflict-loser num \
+    --resilient \
+    --recover \
+    --log-file="$LOG_FILE" \
+    --log-level NOTICE
+
+EXIT_CODE=$?
+
+# Si hubo una interrupción que requiere resync, se auto-recupera con la versión más nueva
+if [ $EXIT_CODE -eq 7 ]; then
+    rclone bisync "$VAULT_LOCAL" "$VAULT_REMOTE" \
+        --resync \
+        --resync-mode newer \
+        --resilient \
+        --recover \
+        --log-file="$LOG_FILE" \
+        --log-level NOTICE
+fi
+
+exit 0
