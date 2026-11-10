@@ -13,7 +13,7 @@ order = [ "default" ]
     panel_overlap = 3
     radius = 0
     scale = 1.0500000081956387
-    start = [ "taskbar", "spacer-1", "button", "bar_2", "next-task" ]
+    start = [ "taskbar", "spacer-1", "button", "bar_2" ]
     widget_spacing = 8
 
         [[bar.default.capsule_group]]
@@ -85,12 +85,74 @@ width = 800
 
 [desktop_widgets]
 schema_version = 2
-widget_order = []
+widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002", "desktop-widget-0000000000000003" ]
 
     [desktop_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 176.0
+    box_width = 400.0
+    cx = 212.0
+    cy = 1018.5
+    output = "eDP-1"
+    placement_height = 1125.0
+    placement_width = 1800.0
+    rotation = 0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        album_art_background = true
+        album_art_blur = 20
+        audio_visualizer = true
+        background_opacity = 1.0
+        background_padding = 16
+        background_radius = 16
+        color = "on_surface"
+        font_family = ""
+        hide_when_no_media = false
+        layout = "horizontal"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 272.0
+    box_width = 400.0
+    cx = 212.0
+    cy = 778.5
+    output = "eDP-1"
+    placement_height = 1125.0
+    placement_width = 1800.0
+    rotation = 0.0
+    type = "calendar"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background_opacity = 0.70000000000000007
+        background_padding = 5
+        background_radius = 10
+        show_events = true
+        show_events_location = false
+        show_week_numbers = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 96.0
+    box_width = 400.0
+    cx = 212.0
+    cy = 578.5
+    output = "eDP-1"
+    placement_height = 1125.0
+    placement_width = 1800.0
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        background_opacity = 0.59999999999999998
+        background_padding = 25
+        background_radius = 10
+        center_text = true
+        clock_style = "digital"
+        font_family = "Roboto"
+        format = "{:%H:%M - %d %b}"
 
 [dock]
 active_monitor_only = true
@@ -436,10 +498,6 @@ scale = 0.90000000000000002
 [widget.network]
 color = "on_surface"
 show_label = false
-
-[widget.next-task]
-scale = 0.90000000000000002
-type = "redxtech/super-productivity:next-task"
 
 [widget.session]
 glyph = "shopping-cart"

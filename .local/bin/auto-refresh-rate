@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# Script para gestión integral de energía en ASUS Zenbook 14 OLED
+# - Batería: Pantalla a 60Hz + Modo Power-Saver (Ultra frío, sin boost agresivo)
+# - Corriente AC: Pantalla a 120Hz + Modo Equilibrado (Fluidez)
+
+get_ac_online() {
+    if [ -f /sys/class/power_supply/AC0/online ]; then
+        cat /sys/class/power_supply/AC0/online
+    else
+        echo 1
+    fi
+}
+
+LAST_STATE=""
+
+update_power_state() {
+    local ac_state
+    ac_state=$(get_ac_online)
+
+    if [ "$ac_state" = "$LAST_STATE" ]; then
+        return
+    fi
+    LAST_STATE="$ac_state"
+
+    if [ "$ac_state" -eq 1 ]; then
+        # Conectado a la corriente
+        hyprctl eval 'hl.monitor({ output = "eDP-1", mode = "2880x1800@120", position = "0x0", scale = "1.6" })' >/dev/null 2>&1
+        powerprofilesctl set balanced >/dev/null 2>&1 || true
+        
+        sleep 0.8
+        notify-send -u normal -t 4500 -a "Energía" -i preferences-desktop-display \
+            -h string:x-canonical-private-synchronous:refresh-rate \
+            "Modo Corriente AC" "Pantalla a 120 Hz + Perfil Equilibrado" 2>/dev/null || true
+    else
+        # En batería (Modo Ultra Frío y Ahorro)
+        hyprctl eval 'hl.monitor({ output = "eDP-1", mode = "2880x1800@60", position = "0x0", scale = "1.6" })' >/dev/null 2>&1
+        powerprofilesctl set power-saver >/dev/null 2>&1 || true
+        
+        sleep 0.8
+        notify-send -u normal -t 4500 -a "Energía" -i battery-full \
+            -h string:x-canonical-private-synchronous:refresh-rate \
+            "Modo Batería" "Pantalla a 60 Hz + Modo Ultra Frío (Ahorro)" 2>/dev/null || true
+    fi
+}
+
+# Ejecutar una vez al inicio
+update_power_state
+
+# Escuchar eventos de udev para cambios en la fuente de energía
+exec udevadm monitor --udev --subsystem-match=power_supply | while read -r _; do
+    sleep 0.5
+    update_power_state
+done

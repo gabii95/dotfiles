@@ -87,6 +87,7 @@ hyprland
 inetutils
 iwd
 jfsutils
+kamoso
 kitty
 layer-shell-qt
 lazydocker
@@ -99,6 +100,7 @@ libdvdcss
 libgsf
 libinput-gestures
 libopenraw
+librewolf
 linux-cachyos
 linux-cachyos-headers
 linux-cachyos-lts
@@ -170,7 +172,6 @@ spotifast-bin
 sudo
 super-productivity
 sysfsutils
-tailscale
 tesseract
 tesseract-data-eng
 tesseract-data-spa
