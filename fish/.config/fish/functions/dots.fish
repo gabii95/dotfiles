@@ -1,3 +1,3 @@
-function dots --wraps='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' --description 'alias dots=git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $argv
+function dots --wraps='git -C $HOME/dotfiles' --description 'alias dots=git -C $HOME/dotfiles'
+    git -C $HOME/dotfiles $argv
 end
