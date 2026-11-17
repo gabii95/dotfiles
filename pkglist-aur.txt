@@ -1,0 +1,3 @@
+libinput-gestures
+rustdesk-bin
+spotifast-bin

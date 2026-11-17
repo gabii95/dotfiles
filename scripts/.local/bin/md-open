@@ -1,0 +1,2 @@
+#!/bin/bash
+exec kitty glow -p -s "$HOME/.config/glow/limpio.json" "$1"

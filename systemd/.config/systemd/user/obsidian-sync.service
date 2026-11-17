@@ -1,0 +1,8 @@
+[Unit]
+Description=Sincronizacion bidireccional automatica de Obsidian con Google Drive
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/gabriel/.local/bin/obsidian-sync

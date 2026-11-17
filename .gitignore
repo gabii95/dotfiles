@@ -1,0 +1,72 @@
+# Archivos de Git y temporales
+.git/
+.dotfiles/
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+*.log
+*.save
+
+# Claves, Tokens, Secretos y Credenciales
+*.pem
+*.key
+*.pub
+id_*
+id_rsa*
+id_ed25519*
+*.p12
+*.pfx
+*.kdbx
+*.gpg
+*.asc
+*.env
+.env.*
+*token*
+*secret*
+*password*
+rclone.conf
+
+# Binarios y ejecutables pesados
+*.iso
+*.tar*
+*.zip
+*.7z
+*.bin
+*.exe
+agy
+
+# Historiales y sesiones
+.*_history
+.bash_history
+.zsh_history
+fish_history
+*.session
+
+# Caches del sistema
+.cache/
+__pycache__/
+*.pyc
+node_modules/
+
+# Navegadores y aplicaciones con sesiones activas
+google-chrome/
+chromium/
+brave/
+zen/
+librewolf/
+mozilla/
+vesktop/
+discord/
+telegram/
+Slack/
+Signal/
+
+# Telemetría y estado dinámico de Noctalia
+*/.local/state/noctalia/clipboard/
+*/.local/state/noctalia/notification_history*
+*/.local/state/noctalia/screen_time.json
+*/.local/state/noctalia/recently_used.json
+*/.local/state/noctalia/usage_counts.json
+*/.local/state/noctalia/state.toml

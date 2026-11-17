@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Glow Markdown
+Exec=/home/gabriel/.local/bin/md-open %f
+Icon=text-markdown
+Terminal=false
+MimeType=text/markdown;text/x-markdown;
