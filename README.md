@@ -35,11 +35,9 @@ Mi entorno de escritorio para el ASUS Zenbook 14 OLED, todo versionado y reprodu
 
 ## Galería
 
-| Lanzador | Centro de control |
+| **Pantalla de bloqueo** | Escritorio |
 |:---:|:---:|
-| ![Lanzador](screenshots/launcher.png) | ![Centro de control](screenshots/control-center.png) |
-| **Pantalla de bloqueo** | **Terminal** |
-| ![Lockscreen](screenshots/lockscreen.png) | ![Terminal](screenshots/terminal.png) |
+| ![Lanzador](screenshots/lockscreen.png) | ![Centro de control](screenshots/desktop.png) |
 
 ---
 
