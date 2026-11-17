@@ -21,7 +21,6 @@ Mi entorno de escritorio para el ASUS Zenbook 14 OLED, todo versionado y reprodu
 ## Índice
 
 - [Galería](#galería)
-- [Hardware](#hardware)
 - [Sistema base](#sistema-base)
 - [Noctalia: el shell del escritorio](#noctalia-el-shell-del-escritorio)
 - [Software y herramientas](#software-y-herramientas)
@@ -41,20 +40,6 @@ Mi entorno de escritorio para el ASUS Zenbook 14 OLED, todo versionado y reprodu
 | ![Lanzador](screenshots/launcher.png) | ![Centro de control](screenshots/control-center.png) |
 | **Pantalla de bloqueo** | **Terminal** |
 | ![Lockscreen](screenshots/lockscreen.png) | ![Terminal](screenshots/terminal.png) |
-
----
-
-## Hardware
-
-| Componente | Detalle |
-|---|---|
-| **Equipo** | ASUS Zenbook 14 OLED (`UM3406HA`) |
-| **CPU** | AMD Ryzen 7 8840HS: 8 núcleos / 16 hilos, hasta 5.13 GHz (Zen 4, `znver4`) |
-| **GPU** | AMD Radeon 780M (RDNA 3 integrada, `vulkan-radeon` / Mesa) |
-| **RAM** | 16 GB LPDDR5X |
-| **Almacenamiento** | NVMe SSD PCIe 4.0 con **Btrfs** (snapshots con Snapper, `fstrim.timer` activo) |
-| **Pantalla interna** | 14" OLED, 2880×1800 (16:10), 120 Hz, 0.2 ms, escala 1.6 |
-| **Pantalla externa** | BenQ GW2283 22", 1920×1080 @ 60 Hz |
 
 ---
 
@@ -100,12 +85,6 @@ El ricing gira alrededor de **Noctalia**, una suite de escritorio para Hyprland 
 - **Selector de fondos de pantalla** con integración a Wallhaven y Swash.
 - **Historial del portapapeles** y **selector de emojis**
 - **Pantalla de bloqueo** y menú de sesión (apagar, reiniciar, suspender)
-
-### Paletas de color dinámicas
-
-Noctalia incluye 9 paletas JSON. El tema elegido se sincroniza automáticamente con **Kitty, Alacritty, GTK3, GTK4 y Qt6**.
-
-`Abismo-Zafiro` · `Kanagawa-Wave` · `Kanagawa-Zafiro` · `Tokyo-Moon` · `Pastel` · `Pizarra` · `Azul` · `Apagado` · `_live_preview`
 
 ---
 
