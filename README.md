@@ -95,7 +95,7 @@ El ricing gira alrededor de **Noctalia**, una suite de escritorio para Hyprland 
 | **Shell principal** | `fish` | Tema CachyOS, función `y` (wrapper de Yazi que cambia al directorio al salir) y alias `dots` |
 | **Shell secundaria** | `zsh` | Integración `cachyos-config` y alias `md` para renderizar Markdown con Glow |
 | **Navegador** | Zen Browser (`zen-browser-bin`) | Wayland nativo |
-| **Archivos (GUI)** | Dolphin | |
+| **Archivos (GUI)** | Luciole (`luciole-git`) | Explorador de archivos nativo del ecosistema Noctalia |
 | **Archivos (TUI)** | Yazi | Vista previa de imágenes |
 | **Visor Markdown** | Glow | Tema de alto contraste `~/.config/glow/limpio.json` |
 | **Monitor del sistema** | Btop | Orden por `cpu direct`, tema Noctalia |
@@ -118,16 +118,13 @@ El ricing gira alrededor de **Noctalia**, una suite de escritorio para Hyprland 
 
 Ubicados en `~/.local/bin/` (paquete `scripts/`).
 
-### `auto-refresh-rate`: gestión inteligente de energía y pantalla
+### Gestión integral de energía y hardware (ASUS Zenbook 14 OLED)
 
-Script con servicio systemd (`auto-refresh-rate.service`) que vigila en bucle `/sys/class/power_supply/AC0/online` y ajusta la pantalla OLED según la fuente de energía:
+Optimización directa a nivel de firmware y kernel con `asusd` (`asusctl`) y `amd-pstate-epp`:
 
-| Estado | Resolución y frecuencia | Perfil de energía |
-|---|---|---|
-| **Conectado a corriente** | `2880x1800@120` | `balanced` (powerprofilesctl) |
-| **En batería** | `2880x1800@60` (ahorra batería) | `balanced` con disipación activa |
-
-Envía notificaciones de escritorio con `notify-send` en cada cambio.
+- **Pantalla OLED fluida:** Mantiene la resolución y refresco nativos (`2880x1800@120Hz`) en todo momento para evitar stuttering y caídas a 15 FPS al desconectar el cargador.
+- **Perfil energético balanceado:** Perfil `BalancePerformance` en batería que permite a los núcleos del Ryzen 7 escalar al instante ante demandas interactivas y regresar de inmediato al reposo profundo (*C-States*).
+- **Gestión térmica y Boost:** Turbo Boost (5.1 GHz) desactivado automáticamente en batería mediante `bat_command` en `/etc/asusd/asusd.ron` (manteniendo la laptop fría a ~40-45°C y ventiladores silenciosos) y reactivado en corriente AC (`ac_command`).
 
 ### `obsidian-sync`: sincronización continua de notas
 
@@ -192,7 +189,7 @@ Abre archivos `.md` en una ventana flotante de Kitty, renderizados con Glow y el
 
 | Atajo | Acción |
 |---|---|
-| `SUPER + E` | Dolphin |
+| `SUPER + E` | Luciole (explorador de archivos) |
 | `SUPER + Y` | Yazi (en Kitty) |
 | `SUPER + T` | Editor de texto |
 | `SUPER + C` | Calculadora |
@@ -219,16 +216,16 @@ Cada carpeta es un paquete de **GNU Stow** que se enlaza simbólicamente en `$HO
 ├── libinput/         -> ~/.config/libinput-gestures.conf
 ├── noctalia/         -> ~/.config/noctalia/ (config.toml, 9 paletas) y ~/.local/state/noctalia/settings.toml
 ├── qt/               -> ~/.config/qt6ct/ y ~/.local/share/color-schemes/noctalia.colors
-├── scripts/          -> ~/.local/bin/ (auto-refresh-rate, obsidian-sync, md-open)
+├── scripts/          -> ~/.local/bin/ (obsidian-sync, md-open)
 ├── swash/            -> ~/.config/swash/settings.ini
-├── systemd/          -> ~/.config/systemd/user/ (auto-refresh-rate.service, obsidian-sync.*)
+├── systemd/          -> ~/.config/systemd/user/ (obsidian-sync.*)
 ├── uwsm/             -> ~/.config/uwsm/env
 ├── wallpapers/       -> ~/Imágenes/wallhaven-zyk2ry.jpg
 ├── zed/              -> ~/.config/zed/settings.json
 ├── zsh/              -> ~/.zshrc
 ├── screenshots/      -> capturas para este README
-├── pkglist-native.txt   # 204 paquetes oficiales
-├── pkglist-aur.txt      # 3 paquetes AUR (libinput-gestures, rustdesk-bin, spotifast-bin)
+├── pkglist-native.txt   # 203 paquetes oficiales
+├── pkglist-aur.txt      # 4 paquetes AUR (libinput-gestures, luciole-git, rustdesk-bin, spotifast-bin)
 ├── pkglist.txt          # 207 paquetes unificados
 ├── .gitignore           # bloquea secretos, SSH, rclone, cachés y binarios
 └── install.sh           # instalador automatizado (Stow + detección de helpers AUR)

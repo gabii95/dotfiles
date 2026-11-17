@@ -1,3 +1,4 @@
 libinput-gestures
+luciole-git
 rustdesk-bin
 spotifast-bin
